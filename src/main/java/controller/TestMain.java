@@ -10,7 +10,13 @@ import java.util.List;
 
 public class TestMain {
 
+
     public static void main(String[] args) {
+
+        Discipline disciplineForm = new Discipline(2,"Математика");
+
+
+
 //       DataBase -> PSQL
 //       FactoryDao factoryDaoPSQL = new FactoryDaoPSQLImpl();
 //       deleteAccountDao(factoryDaoPSQL, 3);
@@ -19,7 +25,7 @@ public class TestMain {
         FactoryDao factoryDaoMySQL = new FactoryDaoMySQLImpl();
 
         //DELETE Discipline
-//        deleteDisciplineDao(factoryDaoMySQL, 11);
+//       deleteDisciplineDao(factoryDaoMySQL, 10);
 
 
         //CREATE Discipline

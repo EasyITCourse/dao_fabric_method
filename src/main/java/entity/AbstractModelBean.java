@@ -12,6 +12,7 @@ public abstract class AbstractModelBean implements Serializable {
     public int hashCode() {
         final int prime = 31;
         int result = 1;
+        //Logic
         result = prime * result + result >>> 2;
         return result;
     }
@@ -25,6 +26,8 @@ public abstract class AbstractModelBean implements Serializable {
         if (getClass() != obj.getClass())
             return false;
         // ******** Logic ***********
+        //*****
+        //*****
         return true;
     }
 
