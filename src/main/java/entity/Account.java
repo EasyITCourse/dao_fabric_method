@@ -1,49 +1,61 @@
 package entity;
 
-// Entity_2
+import java.util.List;
 
-import java.io.Serializable;
+public class Account extends AbstractModelBean  {
 
-public class Account implements Serializable{
+	private static final long serialVersionUID = -5787220666753301113L;
+	private int id;
+	private String username;
+	private String password;
+	private List<Role> roles;
+	public Account() {
+		super();
+	}
+	public Account(String username, String password, List<Role> roles) {
+		super();
+		this.username = username;
+		this.password = password;
+		this.roles = roles;
+	}
 
-    private Integer id;
-    private String name;
+	public Account(int id, String username, String password, List<Role> roles) {
+		super();
+		this.id = id;
+		this.username = username;
+		this.password = password;
+		this.roles = roles;
+	}
+
+	public int getId() {
+		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
+	}
+	public Account(String username, String password) {
+		super();
+		this.username = username;
+		this.password = password;
+	}
+	public String getUsername() {
+		return username;
+	}
+	public void setUsername(String username) {
+		this.username = username;
+	}
+	public String getPassword() {
+		return password;
+	}
+	public void setPassword(String password) {
+		this.password = password;
+	}
+	public List<Role> getRoles() {
+		return roles;
+	}
+	public void setRoles(List<Role> roles) {
+		this.roles = roles;
+	}
 
 
-    public Account() {
-    }
-
-
-    public Account(String name) {
-        this.name = name;
-    }
-
-    public Account(Integer id, String name) {
-        this.id = id;
-        this.name = name;
-    }
-
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    @Override
-    public String toString() {
-        return "Account{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                '}';
-    }
 }

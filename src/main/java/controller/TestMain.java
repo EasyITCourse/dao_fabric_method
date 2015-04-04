@@ -1,52 +1,54 @@
 package controller;
 
 
-import dao.AccountDao;
 import dao.DisciplineDAO;
 import dao.FactoryDao;
 import dao.impl.FactoryDaoMySQLImpl;
-import dao.impl.FactoryDaoPSQLImpl;
+import entity.Discipline;
+
+import java.util.List;
 
 public class TestMain {
 
     public static void main(String[] args) {
+//       DataBase -> PSQL
+//       FactoryDao factoryDaoPSQL = new FactoryDaoPSQLImpl();
+//       deleteAccountDao(factoryDaoPSQL, 3);
 
         // DataBase -> MySQL
         FactoryDao factoryDaoMySQL = new FactoryDaoMySQLImpl();
-        deleteEntityDao(factoryDaoMySQL, 2);
 
-        // DataBase -> PSQL
-       FactoryDao factoryDaoPSQL = new FactoryDaoPSQLImpl();
-       deleteEntityDao(factoryDaoPSQL, 3);
+        //DELETE Discipline
+//        deleteDisciplineDao(factoryDaoMySQL, 11);
 
+
+        //CREATE Discipline
+//        Discipline discipline = new Discipline("Информатика");
+//        setDisciplineAddDao(factoryDaoMySQL, discipline);
+
+        //LIST <Discipline>
+        for (Discipline iter : getDisciplinesListDao(factoryDaoMySQL)) {
+            System.out.println(iter);
+        }
     }
 
-    //Account
-    //Method getAccountByIdDao(FactoryDao factoryDao);
-    //Method addAccountDao(FactoryDao factoryDao);
-    //Method updateAccountDao(FactoryDao factoryDao);
+    // *********   Discipline   ***************
 
-    //Discipline
-    //Method getDisciplineByIdDao(FactoryDao factoryDao);
-    //Method addDisciplineDao(FactoryDao factoryDao);
-    //Method updateDisciplineDao(FactoryDao factoryDao);
-
-    public static void deleteEntityDao(FactoryDao factoryDao, int id) {
-
-        AccountDao accountDao = factoryDao.createAccountDao();
-        System.out.println("deleteeAccount(1): " + accountDao.deleteeAccount(id));
-//        accountDao.addAccount();
-//        accountDao.getAccountById(2);
-//        accountDao.updateAccount();
-
+    //SELECT * FROM disciplines
+    public static List<Discipline> getDisciplinesListDao(FactoryDao factoryDao) {
         DisciplineDAO disciplineDAO = factoryDao.createDisciplineDAO();
-        System.out.println("deleteeDiscipline(1): " + disciplineDAO.deleteeDiscipline(id));
-//        disciplineDAO.getDisciplines();
-//        disciplineDAO.getDisciplineById(1)
-//        disciplineDAO.addDiscipline(Discipline);
-
-
+        return disciplineDAO.getDisciplines();
     }
 
+    //"INSERT INTO disciplines (name) VALUES (?)";
+    public static void setDisciplineAddDao(FactoryDao factoryDao, Discipline discipline) {
+        DisciplineDAO disciplineDAO = factoryDao.createDisciplineDAO();
+        disciplineDAO.addDiscipline(discipline);
+    }
 
+    //DELETE FROM disciplines WHERE id =?
+    public static void deleteDisciplineDao(FactoryDao factoryDao, int id) {
+        DisciplineDAO disciplineDAO = factoryDao.createDisciplineDAO();
+        disciplineDAO.deleteeDiscipline(id);
+    }
 }
